@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)file:///C:/Users/marcus/Desktop/1.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siembra un Árbol - Cambiando el Mundo Hoja por Hoja</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #81c784;
+            --dark-color: #1b5e20;
+            --light-color: #e8f5e9;
+            --text-color: #263238;
+            --background-color: #f5f5f5;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        
+        .content-overlay {
+            background-color: rgba(245, 245, 245, 0.85);
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+        
+        nav {
+            background-color: var(--dark-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-top: 0;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            font-size: 1.8rem;
+            margin-top: 2rem;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-card h4 {
+            color: var(--dark-color);
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+        
+        .hidden-content {
+            display: none;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 4px;
+            margin-top: 1rem;
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        .tree-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tree-type {
+            flex: 1 1 300px;
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .tree-type:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tree-type h4 {
+            color: var(--dark-color);
+            margin-top: 0;
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--secondary-color);
+            position: absolute;
+            top: 0;
+            left: 1rem;
+            line-height: 1;
+            opacity: 0.3;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            text-align: right;
+            color: var(--dark-color);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .stat {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin: 0.5rem 0 0;
+        }
+        
+        form {
+            margin-top: 2rem;
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 0;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.2rem;
+            }
+            
+            nav li {
+                margin: 0 0.5rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1s; }
+        
+        /* Efecto parallax */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 3rem 0;
+        }
+        
+        .parallax::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .parallax-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .parallax h2 {
+            color: white;
+            border-bottom-color: var(--secondary-color);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--secondary-color);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--secondary-color);
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--secondary-color);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--secondary-color) transparent transparent;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media screen and (max-width: 600px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid var(--secondary-color);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--secondary-color) transparent transparent;
+            }
+            
+            .left::before, .right::before {
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--secondary-color) transparent transparent;
+                left: 60px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+        }
+        
+        /* Acordeón */
+        .accordion {
+            margin-top: 2rem;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accordion-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background-color: var(--dark-color);
+        }
+        
+        .accordion-content {
+            background-color: white;
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+        
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Tabs */
+        .tabs {
+            margin-top: 2rem;
+        }
+        
+        .tab-header {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-color);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active::after {
+            transform: scaleX(1);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 2rem 0;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted var(--text-color);
+            cursor: help;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 0.5rem;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--dark-color) transparent transparent transparent;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-overlay">
+        <header>
+            <h1>Siembra un Árbol</h1>
+            <p>Transformando nuestro planeta, un árbol a la vez</p>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="file:///C:/Users/marcus/Desktop/1.html#importancia">Importancia</a></li>
+                <li><a href="file:///C:/Users/marcus/Desktop/1.html#beneficios">Beneficios</a></li>
+                <li><a href="file:///C:/Users/marcus/Desktop/1.html#como-plantar">Cómo Plantar</a></li>
+                <li><a href="file:///C:/Users/marcus/Desktop/1.html#tipos-arboles">Tipos de Árboles</a></li>
+                <li><a href="file:///C:/Users/marcus/Desktop/1.html#testimonios">Testimonios</a></li>
+                <li><a href="file:///C:/Users/marcus/Desktop/1.html#contacto">Únete</a></li>
+            </ul>
+        </nav>
+        
+        <div class="container">
+            <section id="importancia" class="animated">
+                <h2>La Importancia de Sembrar Árboles</h2>
+                <p>Los árboles son los pulmones de nuestro planeta, esenciales para la vida en la Tierra. Desde tiempos ancestrales, han sido fundamentales para el equilibrio ecológico, proporcionando oxígeno, regulando el clima y albergando una biodiversidad incalculable.</p>
+                
+                <div class="stats">
+                    <div class="stat animated delay-1">
+                        <p class="stat-number">3.04</p>
+                        <p class="stat-label">Trillones de árboles en el mundo</p>
+                    </div>
+                    <div class="stat animated delay-2">
+                        <p class="stat-number">15</p>
+                        <p class="stat-label">Millones se pierden cada año</p>
+                    </div>
+                    <div class="stat animated delay-3">
+                        <p class="stat-number">28,000</p>
+                        <p class="stat-label">Especies amenazadas</p>
+                    </div>
+                    <div class="stat animated delay-4">
+                        <p class="stat-number">50%</p>
+                        <p class="stat-label">Reducción de biodiversidad en 40 años</p>
+                    </div>
+                </div>
+                
+                <p>La deforestación avanza a un ritmo alarmante, con aproximadamente 10 millones de hectáreas perdidas cada año, equivalente a 27 campos de fútbol por minuto. Esta pérdida no solo afecta a los ecosistemas locales, sino que tiene repercusiones globales en el clima, la calidad del aire y la disponibilidad de recursos.</p>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Impacto histórico de la deforestación</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>La relación entre la humanidad y los bosques ha sido compleja a lo largo de la historia. Civilizaciones antiguas como los mayas y los habitantes de la Isla de Pascua sufrieron colapsos ecológicos debido a la deforestación desmedida. En la era moderna, la Revolución Industrial marcó un punto de inflexión con la explotación forestal a gran escala para satisfacer la demanda de madera, combustible y tierras agrícolas.</p>
+                            <p>Durante el siglo XX, se perdieron aproximadamente la mitad de los bosques del mundo. Hoy, aunque la tasa de deforestación ha disminuido en algunas regiones, sigue siendo crítica en áreas como la Amazonía, el Congo e Indonesia, donde los ecosistemas únicos están bajo una presión sin precedentes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Datos científicos actuales</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Estudios recientes de la NASA y otras instituciones revelan que los árboles son mucho más importantes para el sistema climático de lo que se pensaba anteriormente. No solo absorben dióxido de carbono, sino que también influyen en los patrones de lluvia a través de la transpiración y afectan la reflectividad de la superficie terrestre (albedo).</p>
+                            <p>Una investigación publicada en Science (2021) demostró que restaurar los bosques degradados podría capturar hasta 205 gigatoneladas de carbono, aproximadamente dos tercios del carbono que los humanos han liberado a la atmósfera desde la Revolución Industrial.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Perspectivas futuras</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Según proyecciones de la ONU, si continúan las tendencias actuales, para 2050 podríamos perder hasta el 90% de los bosques primarios del mundo. Sin embargo, hay esperanza: los mismos modelos muestran que con esfuerzos concertados de reforestación y manejo sostenible, podríamos no solo detener esta pérdida, sino aumentar la cobertura forestal global en un 10% para mediados de siglo.</p>
+                            <p>Iniciativas como el Desafío de Bonn, que busca restaurar 350 millones de hectáreas de tierras degradadas para 2030, y el Trillion Trees Campaign, demuestran que existe un compromiso global creciente con la reforestación.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="parallax" style="background-image: url(&#39;https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80&#39;)">
+                <div class="parallax-content">
+                    <h2>"El mejor momento para plantar un árbol fue hace 20 años. El segundo mejor momento es ahora."</h2>
+                    <p>- Proverbio chino</p>
+                </div>
+            </div>
+            
+            <section id="beneficios" class="animated delay-1">
+                <h2>Beneficios de los Árboles</h2>
+                <p>Los árboles proporcionan innumerables beneficios ecológicos, económicos y sociales. Desde mejorar nuestra salud hasta combatir el cambio climático, su valor es incalculable. A continuación exploramos algunos de sus beneficios más importantes:</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card animated delay-1">
+                        <h4>Combate al Cambio Climático</h4>
+                        <p>Los árboles absorben CO2, el principal gas de efecto invernadero, almacenando carbono y liberando oxígeno.</p>
+                        <button class="btn saber-mas-btn" data-target="clima">Saber más</button>
+                        <div id="clima" class="hidden-content">
+                            <p>Un árbol maduro puede absorber hasta 22 kg de CO2 por año y liberar suficiente oxígeno para que respiren dos personas. Los bosques actualmente absorben aproximadamente el 30% de las emisiones humanas de CO2. La reforestación estratégica podría aumentar esta capacidad significativamente.</p>
+                            <p>Además de secuestrar carbono, los árboles ayudan a regular las temperaturas locales. Las áreas urbanas con buena cobertura arbórea pueden ser hasta 8°C más frescas que las áreas sin árboles, reduciendo la necesidad de aire acondicionado y las emisiones asociadas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card animated delay-2">
+                        <h4>Biodiversidad</h4>
+                        <p>Los árboles son el hábitat del 80% de la biodiversidad terrestre, incluyendo plantas, animales, hongos y microorganismos.</p>
+                        <button class="btn saber-mas-btn" data-target="biodiversidad">Saber más</button>
+                        <div id="biodiversidad" class="hidden-content">
+                            <p>Un solo roble puede albergar más de 400 especies de insectos, proporcionando alimento para aves y otros animales. Los bosques tropicales, que cubren solo el 7% de la superficie terrestre, contienen más de la mitad de todas las especies del planeta.</p>
+                            <p>La pérdida de árboles lleva a extinciones masivas. Se estima que estamos perdiendo especies a un ritmo 1,000 veces mayor que el natural, principalmente debido a la destrucción de hábitats forestales. Conservar y plantar árboles es esencial para detener esta crisis de biodiversidad.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card animated delay-3">
+                        <h4>Salud Humana</h4>
+                        <p>Los árboles mejoran la calidad del aire, reducen el estrés y promueven la actividad física.</p>
+                        <button class="btn saber-mas-btn" data-target="salud">Saber más</button>
+                        <div id="salud" class="hidden-content">
+                            <p>Estudios muestran que los pacientes hospitalizados con vistas a árboles se recuperan más rápido que aquellos sin ellas. Los árboles urbanos filtran partículas contaminantes del aire, reduciendo la incidencia de asma y otras enfermedades respiratorias.</p>
+                            <p>La exposición a entornos arbolados reduce los niveles de cortisol (hormona del estrés) en un 16% y disminuye la presión arterial. Barrios con más árboles reportan menores índices de violencia y mayor cohesión social.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card animated delay-4">
+                        <h4>Economía</h4>
+                        <p>Los bosques generan empleo, materias primas y servicios ecosistémicos valorados en billones de dólares.</p>
+                        <button class="btn saber-mas-btn" data-target="economia">Saber más</button>
+                        <div id="economia" class="hidden-content">
+                            <p>La industria forestal emplea a más de 13 millones de personas directamente y a 41 millones indirectamente. Los productos maderables y no maderables (como frutas, resinas y medicinas) tienen un valor de mercado estimado en $600 mil millones anuales.</p>
+                            <p>Los servicios ecosistémicos de los bosques (purificación de agua, polinización, control de erosión) valen aproximadamente $125 billones anuales, casi el doble del PIB mundial. Cada dólar invertido en restaurar bosques genera $7-30 en beneficios económicos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card animated delay-1">
+                        <h4>Agua</h4>
+                        <p>Los árboles regulan el ciclo hidrológico, previenen inundaciones y filtran el agua.</p>
+                        <button class="btn saber-mas-btn" data-target="agua">Saber más</button>
+                        <div id="agua" class="hidden-content">
+                            <p>Las raíces de los árboles actúan como filtros naturales, eliminando contaminantes y sedimentos del agua antes de que llegue a ríos y acuíferos. Un bosque maduro puede interceptar hasta el 30% de la precipitación, liberándola gradualmente y reduciendo inundaciones.</p>
+                            <p>La deforestación altera los patrones de lluvia. La Amazonía, por ejemplo, recicla su propia agua a través de la transpiración de los árboles. Sin ellos, grandes áreas podrían convertirse en sabanas, afectando la agricultura continental.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card animated delay-2">
+                        <h4>Suelo</h4>
+                        <p>Los árboles previenen la erosión, enriquecen el suelo y combaten la desertificación.</p>
+                        <button class="btn saber-mas-btn" data-target="suelo">Saber más</button>
+                        <div id="suelo" class="hidden-content">
+                            <p>Las raíces de los árboles mantienen unido el suelo, reduciendo la erosión por viento y agua en un 80%. Sus hojas caídas crean mantillo que enriquece el suelo con nutrientes, aumentando su fertilidad.</p>
+                            <p>La agroforestería (combinar árboles con cultivos) puede aumentar los rendimientos agrícolas en un 50-300%, mientras que la tierra deforestada pierde el 90% de su productividad en solo 3 años. Los árboles son clave para combatir la desertificación que afecta a 250 millones de personas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card animated delay-3">
+                        <h4>Comunidades</h4>
+                        <p>Los árboles fortalecen comunidades, preservan culturas y proporcionan seguridad alimentaria.</p>
+                        <button class="btn saber-mas-btn" data-target="comunidades">Saber más</button>
+                        <div id="comunidades" class="hidden-content">
+                            <p>Para muchas comunidades indígenas, los árboles son sagrados y fundamentales para su identidad cultural. Más de 1.600 millones de personas dependen directamente de los bosques para su subsistencia, incluyendo alimentos, medicinas y materiales de construcción.</p>
+                            <p>Los huertos familiares con árboles frutales pueden proporcionar hasta el 40% del ingreso familiar en áreas rurales. La silvicultura comunitaria ha demostrado ser más efectiva que los enfoques estatales o privados para conservar bosques mientras mejora los medios de vida.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card animated delay-4">
+                        <h4>Ciudades Sostenibles</h4>
+                        <p>Los árboles urbanos reducen el efecto isla de calor, ahorran energía y aumentan el valor de propiedades.</p>
+                        <button class="btn saber-mas-btn" data-target="ciudades">Saber más</button>
+                        <div id="ciudades" class="hidden-content">
+                            <p>Los árboles estratégicamente colocados alrededor de edificios pueden reducir las necesidades de aire acondicionado en un 30%, ahorrando energía. Una calle bien arbolada puede ser hasta 5°C más fresca que una sin árboles, reduciendo el efecto isla de calor urbano.</p>
+                            <p>Las propiedades con árboles maduros tienen un valor 10-23% mayor que las equivalentes sin árboles. Los distritos comerciales con buenos árboles reportan mayores ventas, ya que los compradores permanecen más tiempo y gastan más en áreas arboladas.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="como-plantar" class="animated delay-2">
+                <h2>Cómo Plantar un Árbol Correctamente</h2>
+                <p>Plantar un árbol parece simple, pero hacerlo correctamente asegura que crezca sano y fuerte durante décadas. Sigue esta guía paso a paso para maximizar las posibilidades de éxito de tu nuevo árbol.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>1. Elección del Árbol</h3>
+                            <p>Selecciona una especie nativa adecuada para tu clima, tipo de suelo y espacio disponible. Considera el tamaño adulto, necesidades de luz y agua, y propósito (sombra, frutos, ornamentación).</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>2. Época de Plantación</h3>
+                            <p>El mejor momento es durante la dormancia, generalmente en otoño después de la caída de hojas o a principios de primavera antes de la brotación. Esto permite que las raíces se establezcan antes del estrés del calor o frío extremos.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>3. Selección del Lugar</h3>
+                            <p>Elige un sitio con suficiente espacio para el tamaño adulto, lejos de estructuras, cables y tuberías. Considera la exposición al sol, drenaje del suelo y competencia con otros árboles.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>4. Preparación del Terreno</h3>
+                            <p>Cava un hoyo 2-3 veces más ancho que el cepellón pero solo tan profundo como la altura del cepellón. Rompe las paredes del hoyo para facilitar el crecimiento de raíces. No enmiendes el suelo a menos que sea extremadamente pobre.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>5. Preparación del Árbol</h3>
+                            <p>Para árboles en contenedor, riega bien antes de plantar. Para raíz desnuda, remoja las raíces en agua 1-2 horas. Retira solo las bolsas o contenedores, preservando el cepellón intacto.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>6. Plantación</h3>
+                            <p>Coloca el árbol en el centro del hoyo, asegurando que el punto donde las raíces se unen al tronco (cuello) quede ligeramente sobre el nivel del suelo. Rellena con tierra original, compactando suavemente para eliminar bolsas de aire.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>7. Riego Inicial</h3>
+                            <p>Riega abundantemente después de plantar (20-30 litros) para asentar la tierra. Crea una berma alrededor para retener agua. Añade 5-8 cm de mantillo (no contra el tronco) para conservar humedad.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>8. Tutorado (si es necesario)</h3>
+                            <p>Solo coloca tutores si el árbol no se sostiene por sí mismo. Usa materiales suaves y flexibles, y retíralos después de 1-2 años. El movimiento moderado fortalece el tronco.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>9. Cuidados Posteriores</h3>
+                            <p>Riega profundamente 1-2 veces por semana el primer año, luego gradualmente menos. Protege el tronco de cortadoras y roedores. Poda solo ramas muertas o dañadas los primeros años.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <button class="tab-btn active" data-tab="errores">Errores Comunes</button>
+                        <button class="tab-btn" data-tab="herramientas">Herramientas Necesarias</button>
+                        <button class="tab-btn" data-tab="mantenimiento">Mantenimiento a Largo Plazo</button>
+                    </div>
+                    
+                    <div id="errores" class="tab-content active">
+                        <h3>Errores que debes evitar</h3>
+                        <ul>
+                            <li><strong>Plantar demasiado profundo:</strong> El cuello de la raíz debe estar al nivel del suelo o ligeramente por encima.</li>
+                            <li><strong>Hoyo demasiado pequeño:</strong> Las raíces necesitan espacio para expandirse en suelo suelto.</li>
+                            <li><strong>Exceso de agua:</strong> El encharcamiento mata más árboles que la sequía.</li>
+                            <li><strong>Fertilizante al plantar:</strong> Puede quemar raíces nuevas; espera al menos un año.</li>
+                            <li><strong>Poda excesiva:</strong> Las hojas son necesarias para producir energía para el crecimiento de raíces.</li>
+                            <li><strong>Mantillo contra el tronco:</strong> Promueve enfermedades y pudrición; deja 10-15 cm libres.</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="herramientas" class="tab-content">
+                        <h3>Herramientas básicas para plantar</h3>
+                        <ul>
+                            <li><strong>Pala:</strong> Preferiblemente recta para hacer hoyos con paredes verticales.</li>
+                            <li><strong>Carretilla:</strong> Para transportar tierra, mantillo y herramientas.</li>
+                            <li><strong>Tijeras de podar:</strong> Para recortar raíces rotas o ramas dañadas.</li>
+                            <li><strong>Guantes:</strong> Protegen tus manos durante el trabajo.</li>
+                            <li><strong>Manguera o regadera:</strong> Para el riego inicial abundante.</li>
+                            <li><strong>Pala de jardín:</strong> Para mezclar y colocar tierra.</li>
+                            <li><strong>Cinta métrica:</strong> Para asegurar las proporciones correctas del hoyo.</li>
+                            <li><strong>Estacas y ataduras:</strong> Solo si el árbol necesita soporte.</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="mantenimiento" class="tab-content">
+                        <h3>Cuidados a largo plazo</h3>
+                        <ul>
+                            <li><strong>Riego:</strong> Profundo e infrecuente es mejor que poco y frecuente. Ajusta según clima y especie.</li>
+                            <li><strong>Poda:</strong> Solo lo necesario para seguridad y salud del árbol. Mejor en dormancia.</li>
+                            <li><strong>Fertilización:</strong> Solo si hay deficiencias nutricionales evidentes.</li>
+                            <li><strong>Protección:</strong> De cortadoras, podadoras y animales.</li>
+                            <li><strong>Observación:</strong> Detecta temprano plagas, enfermedades o estrés.</li>
+                            <li><strong>Actualización de mantillo:</strong> Renueva anualmente, manteniéndolo alejado del tronco.</li>
+                            <li><strong>Paciencia:</strong> Los árboles crecen lentamente pero valen la espera.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="parallax" style="background-image: url(&#39;https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80&#39;)">
+                <div class="parallax-content">
+                    <h2>"Lo que somos hoy viene de nuestros pensamientos de ayer, y nuestros pensamientos actuales construyen nuestra vida de mañana: nuestra vida es la creación de nuestra mente."</h2>
+                    <p>- Buda</p>
+                </div>
+            </div>
+            
+            <section id="tipos-arboles" class="animated delay-3">
+                <h2>Tipos de Árboles para Diferentes Propósitos</h2>
+                <p>No todos los árboles son iguales. Dependiendo de tus necesidades y condiciones locales, ciertas especies serán más adecuadas que otras. Aquí presentamos una guía de selección basada en diferentes objetivos:</p>
+                
+                <div class="tree-types">
+                    <div class="tree-type">
+                        <h4>Árboles para Sombra Rápida</h4>
+                        <ul>
+                            <li><strong>Fresno (Fraxinus spp.):</strong> Crecimiento rápido, amplia copa.</li>
+                            <li><strong>Álamo (Populus spp.):</strong> Muy rápido crecimiento pero vida más corta.</li>
+                            <li><strong>Arce real (Acer platanoides):</strong> Tolerante a condiciones urbanas.</li>
+                            <li><strong>Sauce (Salix spp.):</strong> Ideal para áreas húmedas.</li>
+                            <li><strong>Catalpa (Catalpa speciosa):</strong> Grandes hojas que dan densa sombra.</li>
+                        </ul>
+                        <p><span class="tooltip">Nota<span class="tooltiptext">Los árboles de crecimiento rápido suelen ser más propensos a daños por viento y tienen vida más corta</span></span></p>
+                    </div>
+                    
+                    <div class="tree-type">
+                        <h4>Árboles Frutales</h4>
+                        <ul>
+                            <li><strong>Manzano (Malus domestica):</strong> Muchas variedades para diferentes climas.</li>
+                            <li><strong>Ciruelo (Prunus domestica):</strong> Producen rápido y requieren poco espacio.</li>
+                            <li><strong>Higuera (Ficus carica):</strong> Tolerante a sequía, frutos nutritivos.</li>
+                            <li><strong>Mango (Mangifera indica):</strong> Para climas tropicales y subtropicales.</li>
+                            <li><strong>Peral (Pyrus spp.):</strong> Larga vida productiva.</li>
+                        </ul>
+                        <p><span class="tooltip">Nota<span class="tooltiptext">Los frutales requieren más cuidado (poda, fertilización) que los ornamentales</span></span></p>
+                    </div>
+                    
+                    <div class="tree-type">
+                        <h4>Árboles Nativos para Biodiversidad</h4>
+                        <ul>
+                            <li><strong>Roble (Quercus spp.):</strong> Soporta más de 500 especies de fauna.</li>
+                            <li><strong>Cerezo silvestre (Prunus avium):</strong> Flores para polinizadores, frutos para aves.</li>
+                            <li><strong>Abedul (Betula spp.):</strong> Aloja numerosos insectos beneficiosos.</li>
+                            <li><strong>Serbal (Sorbus aucuparia):</strong> Bayas para aves en invierno.</li>
+                            <li><strong>Tejo (Taxus baccata):</strong> Larga vida, importante para la fauna.</li>
+                        </ul>
+                        <p><span class="tooltip">Nota<span class="tooltiptext">Consulta expertos locales para las especies nativas de tu región</span></span></p>
+                    </div>
+                    
+                    <div class="tree-type">
+                        <h4>Árboles para Pequeños Jardines</h4>
+                        <ul>
+                            <li><strong>Arce japonés (Acer palmatum):</strong> Crecimiento lento, tamaño controlable.</li>
+                            <li><strong>Cornus (Cornus florida):</strong> Flores hermosas, tamaño mediano.</li>
+                            <li><strong>Árbol de Judas (Cercis siliquastrum):</strong> Flores rosadas directas en tronco.</li>
+                            <li><strong>Magnolia stellata:</strong> Pequeña magnolia con flores fragantes.</li>
+                            <li><strong>Manzano silvestre (Malus sylvestris):</strong> Flores y frutos decorativos.</li>
+                        </ul>
+                        <p><span class="tooltip">Nota<span class="tooltiptext">Considera el tamaño adulto para evitar problemas futuros</span></span></p>
+                    </div>
+                    
+                    <div class="tree-type">
+                        <h4>Árboles para Suelos Pobres</h4>
+                        <ul>
+                            <li><strong>Algarrobo (Ceratonia siliqua):</strong> Muy resistente a sequía y suelos calcáreos.</li>
+                            <li><strong>Pino carrasco (Pinus halepensis):</strong> Crece en suelos rocosos y secos.</li>
+                            <li><strong>Olivo (Olea europaea):</strong> Adaptado a condiciones difíciles.</li>
+                            <li><strong>Acacia (Acacia spp.):</strong> Fijan nitrógeno, mejoran el suelo.</li>
+                            <li><strong>Almez (Celtis australis):</strong> Resistente a contaminación urbana.</li>
+                        </ul>
+                        <p><span class="tooltip">Nota<span class="tooltiptext">Aún en suelos pobres, los primeros años requieren riego hasta establecerse</span></span></p>
+                    </div>
+                    
+                    <div class="tree-type">
+                        <h4>Árboles para Absorber CO2</h4>
+                        <ul>
+                            <li><strong>Pino (Pinus spp.):</strong> Alta tasa de crecimiento y captura de carbono.</li>
+                            <li><strong>Eucalipto (Eucalyptus spp.):</strong> Rápido crecimiento pero consume mucha agua.</li>
+                            <li><strong>Secuoya (Sequoiadendron giganteum):</strong> Larga vida y gran biomasa.</li>
+                            <li><strong>Paulownia (Paulownia tomentosa):</strong> Uno de los árboles de más rápido crecimiento.</li>
+                            <li><strong>Caoba (Swietenia macrophylla):</strong> Madera densa que almacena carbono por siglos.</li>
+                        </ul>
+                        <p><span class="tooltip">Nota<span class="tooltiptext">Prefiere especies nativas cuando sea posible para evitar impactos ecológicos</span></span></p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="testimonios" class="animated delay-4">
+                <h2>Historias de Éxito y Testimonios</h2>
+                <p>Personas y comunidades alrededor del mundo están transformando sus entornos a través de la siembra de árboles. Estas son algunas de sus inspiradoras historias:</p>
+                
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p>Cuando plantamos 50 árboles frutales en nuestra comunidad, no imaginamos el cambio que traería. Ahora tenemos sombra, fruta fresca y un lugar de encuentro que ha unido a los vecinos. Los niños juegan bajo los árboles que plantamos hace una década, ahora altos y frondosos.</p>
+                        <p class="testimonial-author">- María González, Comunidad Las Flores</p>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p>Como agricultor, siempre vi los árboles como competencia para mis cultivos. Cuando probé con agroforestería, todo cambió. Mis rendimientos aumentaron un 40%, el suelo retiene más humedad y ahora tengo ingresos adicionales de la madera y frutos. Nunca volveré al monocultivo.</p>
+                        <p class="testimonial-author">- Javier Ramírez, Agricultor</p>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p>Después del huracán que devastó nuestra ciudad, decidimos reforestar como protección futura. Cinco años después, los nuevos árboles ya están mitigando vientos, reduciendo inundaciones y bajando las temperaturas. La diferencia en verano es notable.</p>
+                        <p class="testimonial-author">- Carlos Mendoza, Ciudad Costera</p>
+                    </div>
+                </div>
+                
+                <h3>Proyectos Inspiradores a Nivel Mundial</h3>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>El Gran Muro Verde - África</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Iniciativa ambiciosa para hacer crecer una maravilla natural de 8,000 km a lo ancho de África, combatiendo la desertificación. Hasta 2023, se han restaurado más de 18 millones de hectáreas, creando 350,000 empleos y mejorando la seguridad alimentaria para millones.</p>
+                            <p>El proyecto no solo planta árboles, sino que combina técnicas tradicionales y modernas de manejo de tierras, empoderando a comunidades locales para ser guardianes de su entorno.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>La Revolución de las Comunidades - India</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>En los años 70, las mujeres del pueblo de Rajasthan iniciaron el movimiento Chipko, abrazando árboles para evitar su tala. Esta acción inspiró un cambio nacional en políticas forestales y hoy India tiene algunos de los programas de reforestación más grandes del mundo.</p>
+                            <p>En 2017, 1.5 millones de voluntarios plantaron 66 millones de árboles en 12 horas en Madhya Pradesh, estableciendo un récord mundial. Proyectos como estos combinan objetivos ecológicos con creación de empleo y empoderamiento comunitario.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>De Desierto a Bosque - China</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>El programa de Forestación de Kubuqi ha transformado 6,000 km² de desierto en tierra productiva, combinando plantación de árboles con desarrollo económico sostenible. Las tormentas de arena que afectaban a Beijing han disminuido notablemente gracias a este y otros proyectos.</p>
+                            <p>China ha aumentado su cobertura forestal del 12% en los 80 a más del 23% hoy, demostrando que incluso países con graves problemas ambientales pueden revertir la tendencia con voluntad política y participación ciudadana.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Restauración de Bosques Urbanos - Brasil</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>En São Paulo, el proyecto "Árvores para la Vida" ha plantado más de 200,000 árboles nativos en áreas urbanas, reduciendo el efecto isla de calor y mejorando la calidad del aire. Cada árbol es adoptado por un ciudadano que se compromete a cuidarlo.</p>
+                            <p>Estudios muestran que los barrios con más árboles tienen hasta 5°C menos en verano, reduciendo muertes por olas de calor. El proyecto también ha creado empleos verdes y conciencia ambiental en una de las ciudades más grandes de América Latina.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contacto" class="animated delay-5">
+                <h2>Únete al Movimiento</h2>
+                <p>Cada árbol cuenta, y cada persona puede marcar la diferencia. Ya sea plantando un árbol en tu jardín, participando en iniciativas locales o apoyando proyectos globales, hay muchas formas de contribuir. ¡Completa este formulario para saber cómo puedes involucrarte!</p>
+                
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" name="name" required="">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" required="">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Teléfono (opcional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Ubicación (Ciudad/País)</label>
+                        <input type="text" id="location" name="location" required="">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest">¿Cómo te gustaría participar?</label>
+                        <select id="interest" name="interest" required="">
+                            <option value="">Selecciona una opción</option>
+                            <option value="plant">Plantar árboles en mi propiedad/comunidad</option>
+                            <option value="volunteer">Ser voluntario en proyectos de reforestación</option>
+                            <option value="donate">Donar a organizaciones de plantación de árboles</option>
+                            <option value="educate">Aprender más para educar a otros</option>
+                            <option value="other">Otra forma</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">¿Tienes experiencia previa plantando árboles?</label>
+                        <select id="experience" name="experience">
+                            <option value="none">Ninguna</option>
+                            <option value="some">Alguna experiencia</option>
+                            <option value="experienced">Experiencia considerable</option>
+                            <option value="professional">Soy profesional en el área</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje adicional (opcional)</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="newsletter" checked=""> Suscribirme al boletín mensual con consejos y oportunidades
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+                
+                <div id="form-success" style="display: none; margin-top: 2rem; padding: 1rem; background-color: var(--secondary-color); color: white; border-radius: 4px;">
+                    <p>¡Gracias por tu interés! Nos pondremos en contacto contigo pronto con información sobre cómo puedes ayudar a reforestar nuestro planeta.</p>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre Nosotros</h3>
+                    <p>Somos un movimiento global dedicado a restaurar los bosques del planeta a través de la acción local y la educación ambiental.</p>
+                    <p>Desde 2010, hemos facilitado la plantación de más de 10 millones de árboles en 35 países.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="file:///C:/Users/marcus/Desktop/1.html#importancia">Importancia de los árboles</a></li>
+                        <li><a href="file:///C:/Users/marcus/Desktop/1.html#beneficios">Beneficios</a></li>
+                        <li><a href="file:///C:/Users/marcus/Desktop/1.html#como-plantar">Guía de plantación</a></li>
+                        <li><a href="file:///C:/Users/marcus/Desktop/1.html#tipos-arboles">Especies recomendadas</a></li>
+                        <li><a href="file:///C:/Users/marcus/Desktop/1.html#contacto">Involúcrate</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>info@siembraunarbol.org</p>
+                    <p>+1 (555) 123-4567</p>
+                    <p>Av. Verde 123, Bosque Ciudad</p>
+                    
+                    <div class="social-icons">
+                        <a href="file:///C:/Users/marcus/Desktop/1.html#" aria-label="Facebook">📘</a>
+                        <a href="file:///C:/Users/marcus/Desktop/1.html#" aria-label="Twitter">🐦</a>
+                        <a href="file:///C:/Users/marcus/Desktop/1.html#" aria-label="Instagram">📷</a>
+                        <a href="file:///C:/Users/marcus/Desktop/1.html#" aria-label="YouTube">▶️</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 9no A. Todos los derechos reservados.</p>
+                <p>Este sitio es parte de la iniciativa global para restaurar los bosques del planeta.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Acordeón
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                const tabContainer = btn.closest('.tabs');
+                
+                // Remover active de todos los botones y contenidos
+                tabContainer.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
+                tabContainer.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+                
+                // Agregar active al botón y contenido clickeado
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Botones "Saber más"
+        document.querySelectorAll('.saber-mas-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const content = document.getElementById(targetId);
+                
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                    btn.textContent = 'Saber más';
+                } else {
+                    content.style.display = 'block';
+                    btn.textContent = 'Mostrar menos';
+                }
+            });
+        });
+        
+        // Formulario
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.style.display = 'none';
+            document.getElementById('form-success').style.display = 'block';
+            window.scrollTo({
+                top: document.getElementById('form-success').offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animación al hacer scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body></html>
